@@ -1,0 +1,42 @@
+#/tracking/verbose 4
+#/run/verbose 2
+#/control/verbose 2 
+#/event/verbose 2
+
+#/dna/det/setMat G4_WATER
+#/geant4e/limits/stepLength 25.0 nm
+/gps/particle e-
+/gps/ene/mono 100 keV
+
+/gps/pos/type Surface
+/gps/pos/shape Sphere
+/gps/pos/radius 50.0 nm
+/gps/direction 0 1 0 
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 180 deg
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 180 deg
+/gps/pos/centre 0. 0. 0. nm
+/gps/ang/user_coor true
+#//gps/direction 0. 0. 0. nm
+#/gps/verbose 2
+#
+#/run/setCut 0.1 nm
+#/cuts/setLowEdge 1eV
+#
+#/run/initialize
+#
+/process/em/pixeElecXSmodel Penelope
+/process/em/fluo true
+/process/em/pixe true
+/process/em/auger true
+/process/em/augerCascade true
+/process/em/deexcitationIgnoreCut true
+/process/em/lowestElectronEnergy 1 eV
+
+/run/setCutForAGivenParticle e- 1 nm
+#/run/setCut 0.1 nm
+#/cuts/setLowEdge 1 eV
+/run/printProgress 1000000
+/run/initialize
+/run/beamOn 10
